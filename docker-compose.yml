@@ -1,0 +1,16 @@
+version: '2'
+services: 
+  tests:
+    build: .
+    environment:
+        POSTGRES_URL: postgresql://postgres:password@postgres:5432/postgres
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: password
+    ports:
+      - "9016:5432"
